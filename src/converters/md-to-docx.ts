@@ -199,25 +199,25 @@ function parseInlineTokens(
   return runs
 }
 
-/**
- * Convenience wrapper that parses a raw markdown inline string and returns
- * docx children.
- */
-function parseInlineContent(text: string): (TextRun | ExternalHyperlink)[] {
-  const tokens = marked.lexer(text)
-  // marked.lexer wraps inline content in a paragraph token
-  const inlineTokens: Token[] = []
-  for (const t of tokens) {
-    if (t.type === 'paragraph' && (t as Tokens.Paragraph).tokens) {
-      inlineTokens.push(...(t as Tokens.Paragraph).tokens!)
-    } else {
-      inlineTokens.push(t)
-    }
-  }
-  const result = parseInlineTokens(inlineTokens)
-  // Ensure at least one run so the paragraph is not empty
-  return result.length > 0 ? result : [new TextRun({ text: '' })]
-}
+// /**
+//  * Convenience wrapper that parses a raw markdown inline string and returns
+//  * docx children.
+//  */
+// function parseInlineContent(text: string): (TextRun | ExternalHyperlink)[] {
+//   const tokens = marked.lexer(text)
+//   // marked.lexer wraps inline content in a paragraph token
+//   const inlineTokens: Token[] = []
+//   for (const t of tokens) {
+//     if (t.type === 'paragraph' && (t as Tokens.Paragraph).tokens) {
+//       inlineTokens.push(...(t as Tokens.Paragraph).tokens!)
+//     } else {
+//       inlineTokens.push(t)
+//     }
+//   }
+//   const result = parseInlineTokens(inlineTokens)
+//   // Ensure at least one run so the paragraph is not empty
+//   return result.length > 0 ? result : [new TextRun({ text: '' })]
+// }
 
 // ---------------------------------------------------------------------------
 // Block-level token processing

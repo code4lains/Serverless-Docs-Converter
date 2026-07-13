@@ -8,7 +8,7 @@ function escapeMdTable(text: string): string {
 
 export async function convertXlsxToMd(
   file: File,
-  s3Config: S3Config | null,
+  _s3Config: S3Config | null,
   onProgress: ConversionProgress
 ): Promise<ConversionResult> {
   onProgress('Reading XLSX file...', 10)
